@@ -9,6 +9,7 @@ import math
 # helper function to start and restart the game
 def new_game():
     global secret_number
+    global secret_number2
     global user_guess
     global guess
     global Numguess
@@ -16,27 +17,64 @@ def new_game():
     print "New game. Range is from 0 to 100"
     print "Number of remaining guesses is %s" % (Numguess) 
     secret_number = random.randrange(0,100)
+    print "\n"
 
 
 # define event handlers for control panel
 def range100():
+    print "New game. Range is from 0 to 100"
+    print "Number of remaining guesses is %s" % (Numguess) 
     secret_number = random.randrange(0,100)
 
 def range1000():
-    secret_number = random.randrange(0,1000)
+    global Numguess2 
+    Numguess2 = 10
+    print "New game. Range is from 0 to 1000"
+    print "Number of remaining guesses is %s" % (Numguess2) 
+    secret_number2 = random.randrange(0,1000)
+    print "\n"
     
 def input_guess(guess):
     guess = int(guess)
+    print "Guess is %s" %(guess)
     global Numguess
+    global Numguess2
+    # if statment for guessing 1-100
     Numguess = Numguess - 1
+    Numguess2 = Numguess2 - 1
     if (secret_number < guess):
         print "Too High!"
         print "Number of remaining guesses is %s" % (Numguess)
+        print "\n"
     elif (secret_number > guess):
         print "Too Low!"
         print "Number of remaining guesses is %s" % (Numguess)
+        print "\n"
     elif (secret_number == guess):
         print "Correct!"
+        print "\n"
+        return new_game()
+    elif (Numguess == 0):
+        print "No more guesses!"
+        print "\n"
+        return new_game()
+    # if statements for 1-1000
+    elif (secret_number2 < guess):
+        print "Too High!"
+        print "Number of remaining guesses is %s" % (Numguess2)
+        print "\n"
+    elif (secret_number2 > guess):
+        print "Too Low!"
+        print "Number of remaining guesses is %s" % (Numguess2)
+        print "\n"
+    elif (secret_number2 == guess):
+        print "Correct!"
+        print "\n"
+        return new_game()
+    elif (Numguess2 == 0):
+        print "No more guesses!"
+        print "\n"
+        return new_game()
     else:
         print "Are you sure you entered a number?"
         
@@ -55,5 +93,3 @@ frame.add_button("Submit Guess ", input_guess, 200)
 # call new_game 
 new_game()
 
-
-# always remember to check your completed program against the grading rubric
