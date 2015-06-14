@@ -55,24 +55,24 @@ def input_guess(guess):
     print "Guess is %s" %(guess)
     
     # if statment for guessing 1-100
-    if (Game100 == True):
-        Numguess = Numguess - 1
-        if (secret_number == guess):
-            print "Correct!"
-            print "\n"
-            return new_game()
-        elif (Numguess == 0):
-            print "Nope, No more guesses!"
-            print "\n"
-            return new_game()
-        elif (secret_number < guess):
-            print "Too High!"
-            print "Number of remaining guesses is %s" % (Numguess)
-            print "\n"
-        elif (secret_number > guess):
-            print "Too Low!"
-            print "Number of remaining guesses is %s" % (Numguess)
-            print "\n"
+    Numguess = Numguess - 1
+    if (secret_number == guess):
+        print "Correct!"
+        print "\n"
+        return new_game()
+    elif (Numguess == 0):
+        print "Nope, No more guesses!"
+        print "\n"
+        return new_game()
+    elif (secret_number < guess):
+        print "Too High!"
+        print "Number of remaining guesses is %s" % (Numguess)
+        print "\n"
+    elif (secret_number > guess):
+        print "Too Low!"
+        print "Number of remaining guesses is %s" % (Numguess)
+        print "\n"
+       
        
 
 
